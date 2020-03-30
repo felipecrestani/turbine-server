@@ -31,11 +31,3 @@ spec:
             memory: {{.Values.limits.memory}}
           requests:
             memory: {{.Values.requests.memory}}
-        volumeMounts:
-        - name: config-volume
-          mountPath: /src/resources/application.yml
-          subPath: application.yml
-      volumes:
-      - name: config-volume
-        configMap:
-          name: {{.Release.Name}}
