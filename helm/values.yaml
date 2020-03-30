@@ -5,3 +5,9 @@ requests:
   memory: 300Mi
 
 applications: 'cnpj,accountancy,cobrador,subscriptions,invoicer,financial,finance,creditcard-charge,payments'
+
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    external-dns.alpha.kubernetes.io/target: traefik.dev.contaazul.local.
+  host: turbine.dev.contaazul.local"

@@ -3,9 +3,10 @@ kind: Ingress
 metadata:
   name: {{.Release.Name}}
   namespace: kube-system
+{{- if .Values.ingress.annotations }}
   annotations:
-    kubernetes.io/ingress.class: traefik
-    external-dns.alpha.kubernetes.io/target: traefik.dev.contaazul.local.
+{{ toYaml .Values.ingress.annotations | indent 4 }}
+{{- end }}
 spec:
   rules:
   - host: "{{.Release.Name}}.dev.contaazul.local"
