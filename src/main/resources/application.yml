@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: turbine
+security.basic.enabled: false
+management.security.enabled: false
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    enable: false
+turbine:
+  instanceUrlSuffix: :8080/hystrix.stream
+  clusterNameExpression: new String("default")
+  aggregator:
+    clusterConfig: default
+InstanceDiscovery:
+  impl: com.contaazul.turbine.KubernetesInstanceDiscovery.class
+
+
+
+
+
