@@ -1,17 +1,26 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: turbine
+  name: {{.Release.Name}}
   namespace: kube-system
 data:
   application.yml: |
-    turbine.aggregator.clusterConfig: cnpj,accountancy,cobrador,subscriptions,invoicer,financial,finance,creditcard-charge,payments
-    turbine.aggregator.clusters.accountancy: default.accountancy
-    turbine.aggregator.clusters.cnpj: default.cnpj
-    turbine.aggregator.clusters.cobrador: default.cobrador
-    turbine.aggregator.clusters.subscriptions: default.subscriptions
-    turbine.aggregator.clusters.invoicer: default.invoicer
-    turbine.aggregator.clusters.financial: default.financial
-    turbine.aggregator.clusters.finance: default.finance
-    turbine.aggregator.clusters.creditcard-charge: default.creditcard-charge
-    turbine.aggregator.clusters.payments: default.payments
+    spring:
+      application:
+        name: turbine
+    security.basic.enabled: false
+    management.security.enabled: false
+    eureka:
+      instance:
+        hostname: localhost
+      client:
+        registerWithEureka: false
+        fetchRegistry: false
+        enable: false
+    turbine:
+      instanceUrlSuffix: :8080/hystrix.stream
+      clusterNameExpression: new String("default")
+      aggregator:
+        clusterConfig: {{.Values.applications}}
+    InstanceDiscovery:
+      impl: com.contaazul.turbine.KubernetesInstanceDiscovery.class

@@ -3,3 +3,5 @@ limits:
   memory: 300Mi
 requests:
   memory: 300Mi
+
+applications: 'cnpj,accountancy,cobrador,subscriptions,invoicer,financial,finance,creditcard-charge,payments'
