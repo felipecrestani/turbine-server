@@ -4,7 +4,7 @@ limits:
 requests:
   memory: 300Mi
 
-applications: 'cnpj,accountancy,cobrador,subscriptions,invoicer,financial,finance,creditcard-charge,payments'
+applications: cnpj,accountancy,cobrador,subscriptions,invoicer,financial,finance,creditcard-charge,payments
 
 ingress:
   annotations:
