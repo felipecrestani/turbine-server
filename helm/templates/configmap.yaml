@@ -6,12 +6,3 @@ metadata:
 data:
   application.yml: |
     turbine.aggregator.clusterConfig: cnpj,accountancy,cobrador,subscriptions,invoicer,financial,finance,creditcard-charge,payments
-    turbine.aggregator.clusters.accountancy: default.accountancy
-    turbine.aggregator.clusters.cnpj: default.cnpj
-    turbine.aggregator.clusters.cobrador: default.cobrador
-    turbine.aggregator.clusters.subscriptions: default.subscriptions
-    turbine.aggregator.clusters.invoicer: default.invoicer
-    turbine.aggregator.clusters.financial: default.financial
-    turbine.aggregator.clusters.finance: default.finance
-    turbine.aggregator.clusters.creditcard-charge: default.creditcard-charge
-    turbine.aggregator.clusters.payments: default.payments
