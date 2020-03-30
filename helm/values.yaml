@@ -1,0 +1,5 @@
+image: felipecrestani/turbine:latest
+limits:
+  memory: 300Mi
+requests:
+  memory: 300Mi

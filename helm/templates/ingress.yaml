@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{.Release.Name}}
+  namespace: kube-system
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    external-dns.alpha.kubernetes.io/target: traefik.dev.contaazul.local.
+spec:
+  rules:
+  - host: "{{.Release.Name}}.dev.contaazul.local"
+    http:
+      paths:
+      - backend:
+          serviceName: {{.Release.Name}}
+          servicePort: 80

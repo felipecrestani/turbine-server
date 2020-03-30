@@ -40,20 +40,18 @@ public class KubernetesInstanceDiscovery implements InstanceDiscovery {
 
 	@Override
 	public Collection<Instance> getInstanceList() {
-		var list = client.pods().inNamespace( "default" )
+		return client.pods().inNamespace( "default" )
 				.list()
 				.getItems().stream()
 				.filter( pod -> pod.getMetadata().getAnnotations() != null )  // Ignore pods without annotations
 				.map( pod -> {
 					String host = pod.getStatus().getPodIP();
 					boolean running = pod.getStatus().getPhase().equals( "Running" );
-					var i = new Instance( host, extractClusterNameFor( pod ), running ); //
+					Instance i = new Instance( host, extractClusterNameFor( pod ), running ); //
 					logger.info( i.toString() );
 					return i;
 				} )
 				.filter( Objects::nonNull )
 				.collect( Collectors.toList() );
-
-		return list;
 	}
 }
